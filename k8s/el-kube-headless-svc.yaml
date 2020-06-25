@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: el-kube-headless
+spec:
+  clusterIP: None
+  # The selector is just a way to filter the pods on which the app is deployed.
+  # It should match up with the labels specified above
+  selector:
+    app: el-kube
+    role: service

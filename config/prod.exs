@@ -53,11 +53,9 @@ config :logger, level: :info
 
 config :libcluster,
   topologies: [
-    k8s: [
-      strategy: Elixir.Cluster.Strategy.Kubernetes,
+    el_kube: [
+      strategy: Elixir.Cluster.Strategy.Kubernetes.DNS,
       config: [
-        mode: :ip,
-        kubernetes_node_basename: "el-kube",
-        kubernetes_selector: "app=el-kube",
-        kubernetes_namespace: "default",
+        service: "el-kube-headless",
+        application_name: "el_kube", # AKA release_name (See env.sh.eex)
         polling_interval: 10_000]]]
