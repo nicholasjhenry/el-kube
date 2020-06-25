@@ -19,6 +19,10 @@ spec:
       - env:
         - name: POSTGRES_DB
           value: el_kube_prod
+        - name: POSTGRES_USER
+          value: postgres
+        - name: POSTGRES_PASSWORD
+          value: postgres
         image: postgres:9.6
         name: db
         ports:
