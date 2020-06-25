@@ -40,3 +40,6 @@ container.run:
 	-e APP_HOST=localhost \
 	-e PORT=4000 \
 	--network el_kube_default --publish 4000:4000 el_kube:latest
+
+kubernetes.setup:
+	kubectl create -f k8s/pvc.yaml
