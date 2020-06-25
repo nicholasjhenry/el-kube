@@ -40,8 +40,6 @@ spec:
             value: el-kube-secret-cookie
           - name: SECRET_KEY_BASE
             value: super-secret-key-base
-          - name: SERVICE_NAME
-            value: el-kube.default.svc.cluster.local
         resources: {}
         securityContext:
           privileged: false

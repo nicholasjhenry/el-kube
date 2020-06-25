@@ -11,7 +11,3 @@ config :el_kube, ElKubeWeb.Endpoint,
   http: [port: port],
   secret_key_base: secret_key_base,
   url: [host: {:system, "APP_HOST"}, port: {:system, "PORT"}]
-
-config :peerage, via: Peerage.Via.Dns,
-  dns_name: service_name,
-  app_name: "el_kube"
