@@ -20,3 +20,7 @@ config :el_kube, ElKubeWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+# in test we don't do anything with libcluster
+config :libcluster,
+  topologies: []

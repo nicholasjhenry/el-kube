@@ -6,7 +6,10 @@ defmodule ElKube.Application do
   use Application
 
   def start(_type, _args) do
+    topologies = Application.get_env(:libcluster, :topologies)
+
     children = [
+      {Cluster.Supervisor, [topologies, [name: ElKube.ClusterSupervisor]]},
       # Start the Ecto repository
       ElKube.Repo,
       # Start the Telemetry supervisor

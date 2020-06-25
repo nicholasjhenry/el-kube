@@ -16,7 +16,7 @@ config :el_kube, ElKube.Repo,
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
 config :el_kube, ElKubeWeb.Endpoint,
-  http: [port: 4000],
+  http: [port: System.get_env("HTTP_PORT", "4000") |> String.to_integer()],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
@@ -74,3 +74,11 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
+
+config :libcluster,
+  topologies: [
+    local: [
+      strategy: Cluster.Strategy.Epmd,
+      config: [hosts: [:"a@127.0.0.1", :"b@127.0.0.1"]]
+    ]
+  ]
