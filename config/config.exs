@@ -8,7 +8,8 @@
 use Mix.Config
 
 config :el_kube,
-  ecto_repos: [ElKube.Repo]
+  ecto_repos: [ElKube.Repo],
+  pool_size: 10
 
 # Configures the endpoint
 config :el_kube, ElKubeWeb.Endpoint,
