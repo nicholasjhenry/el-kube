@@ -1,3 +1,6 @@
+deps.run:
+	docker-compose up -d
+
 app.start.node_a:
 	iex --name a@127.0.0.1 -S mix phx.server
 
@@ -27,3 +30,13 @@ app.smoke_test.console:
 
 container.build:
 	docker build -t el_kube:latest .
+
+container.run:
+	docker run -it -d --rm \
+	-e DB_URL=ecto://postgres:postgres@db/el_kube_prod \
+	-e RELEASE_COOKIE=secret-cookie \
+	-e SECRET_KEY_BASE=your-secret-key \
+	-e SERVICE_NAME=el-kube \
+	-e APP_HOST=localhost \
+	-e PORT=4000 \
+	--network el_kube_default --publish 4000:4000 el_kube:latest
