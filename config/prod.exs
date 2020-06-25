@@ -61,7 +61,3 @@ config :libcluster,
         kubernetes_selector: "app=el-kube",
         kubernetes_namespace: "default",
         polling_interval: 10_000]]]
-
-# Finally import the config/prod.secret.exs which loads secrets
-# and configuration from environment variables.
-import_config "prod.secret.exs"
