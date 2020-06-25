@@ -24,3 +24,6 @@ app.smoke_test.console:
 	APP_HOST=localhost \
 	PORT=4000 \
 	_build/prod/rel/el_kube/bin/el_kube remote
+
+container.build:
+	docker build -t el_kube:latest .

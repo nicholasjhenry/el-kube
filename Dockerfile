@@ -1,8 +1,8 @@
-FROM elixir:1.9 AS builder
+FROM elixir:1.10.3 AS builder
 ENV MIX_ENV=prod
 WORKDIR /usr/local/el_kube
 # This step installs all the build tools we'll need
-RUN curl -sL https://deb.nodesource.com/setup_13.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
     apt-get install -y nodejs && \
     mix local.rebar --force && \
     mix local.hex --force
@@ -13,6 +13,7 @@ RUN mix do deps.get, deps.compile, compile
 # Compile Javascript
 RUN cd assets \
     && npm install \
+    && npm rebuild node-sass \
     && ./node_modules/webpack/bin/webpack.js --mode production \
     && cd .. \
     && mix phx.digest
