@@ -45,3 +45,4 @@ kubernetes.setup:
 	kubectl create -f k8s/pvc.yaml
 	kubectl create -f k8s/db.yaml
 	kubectl create -f k8s/db-svc.yaml
+	kubectl create -f k8s/el-kube-public-svc.yaml
